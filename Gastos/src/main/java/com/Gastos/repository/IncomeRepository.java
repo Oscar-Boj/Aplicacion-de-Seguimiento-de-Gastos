@@ -1,4 +1,2 @@
-package com.Gastos.repository;
-
-public class IncomeRepository {
+package com.Gastos.repository;public interface IncomeRepository {
 }
