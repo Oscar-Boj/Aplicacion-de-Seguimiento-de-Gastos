@@ -80,5 +80,5 @@ class JwtAuthenticationFilterTest {
 
         assertThrows(RuntimeException.class, () -> jwtAuthenticationFilter.attemptAuthentication(request, response));
     }
-    
+
 }
