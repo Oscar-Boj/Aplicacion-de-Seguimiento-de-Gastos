@@ -1,2 +1,4 @@
-package com.Gastos.controller;public class GastosControllerTest {
+package com.Gastos.controller;
+
+public class GastosControllerTest {
 }

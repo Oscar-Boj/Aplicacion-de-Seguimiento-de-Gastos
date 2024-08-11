@@ -1,2 +1,4 @@
-package com.Gastos.service;public class GastosServiceTest {
+package com.Gastos.service;
+
+public class GastosServiceTest {
 }
