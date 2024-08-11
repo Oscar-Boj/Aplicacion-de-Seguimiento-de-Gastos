@@ -15,7 +15,7 @@ public class Gastos {
     private String description;
     private double amount;
     private String category;
-    private Date date;
+    private String date;
 
     // Getters and Setters
     public Long getId() {
@@ -50,11 +50,11 @@ public class Gastos {
         this.category = category;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 }
