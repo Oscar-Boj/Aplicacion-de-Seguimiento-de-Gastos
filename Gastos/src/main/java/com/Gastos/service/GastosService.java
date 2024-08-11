@@ -1,2 +1,4 @@
-package com.Gastos.service;public class GastosService {
+package com.Gastos.service;
+
+public class GastosService {
 }

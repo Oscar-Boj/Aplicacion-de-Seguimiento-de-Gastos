@@ -1,2 +1,4 @@
-package com.Gastos.model;public class User {
+package com.Gastos.model;
+
+public class User {
 }

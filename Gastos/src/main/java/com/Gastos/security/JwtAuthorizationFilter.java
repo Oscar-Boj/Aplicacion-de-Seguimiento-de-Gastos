@@ -1,2 +1,4 @@
-package com.Gastos.security;public class JwtAuthorizationFilter {
+package com.Gastos.security;
+
+public class JwtAuthorizationFilter {
 }

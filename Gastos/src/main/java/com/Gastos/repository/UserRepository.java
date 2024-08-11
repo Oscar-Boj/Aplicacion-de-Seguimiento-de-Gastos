@@ -1,2 +1,4 @@
-package com.Gastos.repository;public class UserRepository {
+package com.Gastos.repository;
+
+public class UserRepository {
 }

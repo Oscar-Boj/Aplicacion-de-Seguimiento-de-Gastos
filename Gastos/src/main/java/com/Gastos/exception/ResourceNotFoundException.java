@@ -1,2 +1,4 @@
-package com.Gastos.exception;public class ResourceNotFoundException {
+package com.Gastos.exception;
+
+public class ResourceNotFoundException {
 }

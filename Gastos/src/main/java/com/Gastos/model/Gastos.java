@@ -1,2 +1,4 @@
-package com.Gastos.model;public class Gastos {
+package com.Gastos.model;
+
+public class Gastos {
 }

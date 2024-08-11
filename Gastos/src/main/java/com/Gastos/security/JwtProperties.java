@@ -1,2 +1,4 @@
-package com.Gastos.security;public class JwtProperties {
+package com.Gastos.security;
+
+public class JwtProperties {
 }
