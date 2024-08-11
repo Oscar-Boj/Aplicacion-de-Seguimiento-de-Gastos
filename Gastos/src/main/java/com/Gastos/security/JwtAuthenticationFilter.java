@@ -17,6 +17,7 @@ import java.util.Date;
 
 @Component
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
+
     @Autowired
     private JwtProperties jwtProperties;
 
