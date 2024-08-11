@@ -1,36 +1,36 @@
 package com.Gastos.security;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
-
-@Component
 public class JwtProperties {
 
-    @Value("${jwt.header}")
-    private String header;
+    // Clave secreta para firmar el JWT
+    public static final String SECRET = "your_secret_key"; // Debe ser un valor seguro y aleatorio
 
-    @Value("${jwt.prefix}")
-    private String prefix;
+    // Tiempo de expiración del JWT en milisegundos
+    public static final long EXPIRATION_TIME = 864_000_000; // 10 días
 
-    @Value("${jwt.secret}")
-    private String secret;
+    // Prefijo del token en el encabezado HTTP
+    public static final String HEADER_STRING = "Authorization";
 
-    @Value("${jwt.expiration}")
-    private Long expiration;
+    // Prefijo del token (ej. "Bearer ")
+    public static final String TOKEN_PREFIX = "Bearer ";
 
-    public String getHeader() {
-        return header;
+    // Método para obtener el valor del secreto
+    public static String getSecret() {
+        return SECRET;
     }
 
-    public String getPrefix() {
-        return prefix;
+    // Método para obtener el valor de la expiración
+    public static long getExpirationTime() {
+        return EXPIRATION_TIME;
     }
 
-    public String getSecret() {
-        return secret;
+    // Método para obtener el valor del encabezado
+    public static String getHeader() {
+        return HEADER_STRING;
     }
 
-    public Long getExpiration() {
-        return expiration;
+    // Método para obtener el prefijo del token
+    public static String getPrefix() {
+        return TOKEN_PREFIX;
     }
 }
