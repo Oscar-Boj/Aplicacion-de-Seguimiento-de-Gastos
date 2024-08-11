@@ -22,11 +22,11 @@ import java.util.Date;
 @Component
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-    @Autowired
-    private UserDetailServiceImpl userDetailsService;
+    private final UserDetailServiceImpl userDetailsService;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    public JwtAuthenticationFilter(UserDetailServiceImpl userDetailsService) {
+        this.userDetailsService = userDetailsService;
+    }
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {

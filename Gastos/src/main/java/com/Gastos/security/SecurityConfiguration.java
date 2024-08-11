@@ -25,20 +25,20 @@ public class SecurityConfiguration {
     private UserDetailServiceImpl userDetailsService;
 
     @Autowired
-    private JwtAuthenticationFilter jwtAuthenticationFilter;
-
-    @Autowired
-    private JwtAuthorizationFilter jwtAuthorizationFilter;
+    private PasswordEncoder passwordEncoder;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        JwtAuthenticationFilter jwtAuthenticationFilter = new JwtAuthenticationFilter(userDetailsService);
+        jwtAuthenticationFilter.setAuthenticationManager(authenticationManager(http));
+
         http
-                .csrf(csrf -> csrf.disable())  // Deshabilita CSRF
+                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/api/expenses/**").authenticated() // Cambiado a requestMatchers
+                        .requestMatchers("/api/expenses/**").authenticated()
                         .anyRequest().permitAll()
                 )
-                .addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(jwtAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .addFilter(jwtAuthenticationFilter);
 
         return http.build();
@@ -51,12 +51,21 @@ public class SecurityConfiguration {
 
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
-        return new ProviderManager(
-                Collections.singletonList(new DaoAuthenticationProvider() {{
-                    setUserDetailsService(userDetailsService);
-                    setPasswordEncoder(passwordEncoder());
-                }})
-        );
+        return new ProviderManager(Collections.singletonList(new DaoAuthenticationProvider() {{
+            setUserDetailsService(userDetailsService);
+            setPasswordEncoder(passwordEncoder());
+        }}));
+    }
+
+    @Bean
+    public JwtAuthorizationFilter jwtAuthorizationFilter() {
+        return new JwtAuthorizationFilter(jwtProperties());
+    }
+
+    @Bean
+    public JwtProperties jwtProperties() {
+        // Configura y retorna JwtProperties
+        return new JwtProperties();
     }
 
 }
